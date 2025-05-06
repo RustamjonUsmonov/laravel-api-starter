@@ -124,34 +124,6 @@ The API provides endpoints for authentication, password management, token handli
 | POST   | `/api/v1/logout`                   | `AuthController@logout`         | `auth:sanctum,token.expires`  | Log out and revoke token                 |
 | GET    | `/api/v1/verify-email/{id}/{hash}` | `AuthController@verifyEmail`    | `signed`                      | Verify user’s email address              |
 
-### Example Request
-
-**Register a User**:
-```bash
-curl -X POST http://localhost:8000/api/v1/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "John Doe",
-    "email": "john@example.com",
-    "password": "password123",
-    "password_confirmation": "password123"
-  }'
-```
-
-**Response**:
-```json
-{
-  "user": {
-    "id": 1,
-    "name": "John Doe",
-    "email": "john@example.com",
-    "email_verified_at": null,
-    "created_at": "2025-05-06T09:15:04.000000Z",
-    "updated_at": "2025-05-06T09:15:04.000000Z"
-  },
-  "token": "1|wf6hGrjkTbLO3V0HuToJwE9SFjLDl1vIJH78P97X1ed6cada"
-}
-```
 
 ## 🛠️ Project Structure
 
@@ -184,20 +156,6 @@ Run tests:
 ./vendor/bin/pest
 ```
 
-Example test:
-```php
-it('registers a user successfully', function () {
-    $response = $this->postJson('/api/v1/register', [
-        'name' => 'John Doe',
-        'email' => 'john@example.com',
-        'password' => 'password123',
-        'password_confirmation' => 'password123',
-    ]);
-
-    $response->assertStatus(201)
-        ->assertJsonStructure(['user', 'token']);
-});
-```
 ## 🛠️ Code Quality with Rector
 
 This project leverages **Rector**, a powerful PHP code refactoring tool, to ensure high-quality, modern, and maintainable code. Rector automates code upgrades, enforces best practices, and keeps the codebase aligned with **PHP 8.2** and **Laravel 12** standards. It’s integrated into the development workflow to streamline refactoring and improve code consistency.
