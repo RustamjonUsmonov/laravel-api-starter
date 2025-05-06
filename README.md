@@ -1,61 +1,270 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel API Starter
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)
+![PHP](https://img.shields.io/badge/PHP-8.2-blue.svg)
+![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)
 
-## About Laravel
+Welcome to the **Laravel API Starter**, a modern, scalable, and feature-rich API boilerplate built with **Laravel 12** and **PHP 8.2**. This project is designed for developers who want to kickstart a robust API with **CQRS**, **Domain-Driven Design (DDD)**, **Data Transfer Objects (DTOs)**, **Spatie Permissions**, **Laravel Sanctum**, **Swagger documentation**, and comprehensive **feature tests**. Whether you’re building a SaaS, microservice, or enterprise API, this starter has you covered.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Modern Architecture**:
+    - **CQRS** (Command Query Responsibility Segregation) for clean separation of reads and writes.
+    - **DDD** (Domain-Driven Design) for a structured, maintainable codebase.
+    - **DTOs** (Data Transfer Objects) for type-safe, validated data transfer.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Authentication & Authorization**:
+    - **Laravel Sanctum** for secure API token authentication.
+    - **Spatie Laravel Permission** for role-based access control (RBAC).
+    - Routes for registration, login, logout, password management, and email verification.
 
-## Learning Laravel
+- **API Documentation**:
+    - **Swagger** (OpenAPI) integration for interactive, auto-generated API docs.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Testing**:
+    - Comprehensive **feature tests** using **Pest** to ensure reliability.
+    - Middleware for logging commands/queries with sensitive data masking.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Scalability & Security**:
+    - Middleware for token expiration and signed URLs.
+    - Sensitive data (e.g., `email`, `api_token`, `hash`) masked in logs.
+    - Built with **Laravel 12** and **PHP 8.2** for modern performance and type safety.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Getting Started
 
-## Laravel Sponsors
+### Prerequisites
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **PHP**: 8.2 or higher
+- **Composer**: 2.x
+- **Database**: MySQL
+- **Redis** (optional): For queue or caching
+- **Swagger UI**: For API documentation (configured via Laravel package)
 
-### Premium Partners
+### Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/laravel-api-starter.git
+   cd laravel-api-starter
+   ```
 
-## Contributing
+2. **Install Dependencies**:
+   ```bash
+   composer install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Set Up Environment**:
+    - Copy the `.env.example` to `.env`:
+      ```bash
+      cp .env.example .env
+      ```
+    - Configure your `.env` file with database, Sanctum, and other settings:
+      ```env
+      APP_NAME="Laravel API Starter"
+      APP_URL=http://localhost
+      DB_CONNECTION=mysql
+      DB_HOST=127.0.0.1
+      DB_PORT=3306
+      DB_DATABASE=laravel_api
+      DB_USERNAME=root
+      DB_PASSWORD=
+      ```
 
-## Code of Conduct
+4. **Generate Application Key**:
+   ```bash
+   php artisan key:generate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. **Run Migrations & Seeders**:
+   ```bash
+   php artisan migrate --seed
+   ```
 
-## Security Vulnerabilities
+6. **Start the Development Server**:
+   ```bash
+   php artisan serve
+   ```
+   Access the API at `http://localhost:8000`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7. **View Swagger Docs**:
+    - Run:
+      ```bash
+      php artisan l5-swagger:generate
+      ```
+    - Access at `http://localhost:8000/api/documentation`.
 
-## License
+### Configuration
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Sanctum**: Ensure `SANCTUM_STATEFUL_DOMAINS` is set for SPA or cross-origin requests.
+- **Spatie Permissions**: Roles and permissions are seeded. Customize in `database/seeders/RolePermissionSeeder.php`.
+- **Logging**: Sensitive fields (`password`, `access_token`, `api_token`, `hash`, `email`) are masked in logs. Update in `config/logging.php`:
+  ```php
+  'sensitive_fields' => [
+      'password',
+      'access_token',
+      'api_token',
+      'hash',
+      'email',
+  ]
+  ```
+- **Swagger**: Configure in `config/l5-swagger.php` for custom API documentation settings.
+
+## 📜 API Endpoints
+
+The API provides endpoints for authentication, password management, token handling, and email verification, protected by **Sanctum** and **signed URLs**.
+
+| Method | Endpoint                       | Action                          | Middleware                     | Description                              |
+|--------|--------------------------------|---------------------------------|-------------------------------|------------------------------------------|
+| POST   | `/api/register`                | `AuthController@register`       | None                          | Register a new user                      |
+| POST   | `/api/login`                   | `AuthController@login`          | None                          | Log in and receive an API token          |
+| POST   | `/api/forgot-password`         | `AuthController@forget`         | None                          | Request a password reset link            |
+| POST   | `/api/reset-password`          | `AuthController@reset`          | None                          | Reset password using a token             |
+| POST   | `/api/update-password`         | `AuthController@updatePassword` | `auth:sanctum,token.expires`  | Update password for authenticated user   |
+| POST   | `/api/refresh`                 | `AuthController@refresh`        | `refresh.sanctum`             | Refresh API token                        |
+| POST   | `/api/logout`                  | `AuthController@logout`         | `auth:sanctum,token.expires`  | Log out and revoke token                 |
+| GET    | `/api/verify-email/{id}/{hash}`| `AuthController@verifyEmail`    | `signed`                      | Verify user’s email address              |
+
+### Example Request
+
+**Register a User**:
+```bash
+curl -X POST http://localhost:8000/api/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password123",
+    "password_confirmation": "password123"
+  }'
+```
+
+**Response**:
+```json
+{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "email_verified_at": null,
+    "created_at": "2025-05-06T09:15:04.000000Z",
+    "updated_at": "2025-05-06T09:15:04.000000Z"
+  },
+  "token": "1|wf6hGrjkTbLO3V0HuToJwE9SFjLDl1vIJH78P97X1ed6cada"
+}
+```
+
+## 🛠️ Project Structure
+
+The project follows **DDD** principles with a modular structure:
+
+```
+app/
+├── Domains/                    # DDD domains (e.g., Authorization)
+│   ├── Authorization/
+│   │   ├── Commands/          # CQRS commands (e.g., RegisterUserCommand)
+│   │   ├── Queries/           # CQRS queries
+│   │   ├── DTO/               # Data Transfer Objects (e.g., VerifyEmailDTO)
+│   │   └── ...
+├── Http/
+│   ├── Controllers/           # API controllers (e.g., AuthController)
+│   ├── Middleware/            # Custom middleware (e.g., LoggingMiddleware)
+│   └── ...
+config/                        # Configuration files (e.g., logging.php)
+database/                      # Migrations, seeders
+tests/                         # Pest feature and unit tests
+```
+
+## 🧪 Testing
+
+The project uses **Pest** for testing, with **feature tests** covering authentication, authorization, and CQRS pipelines.
+By default, it uses mysql, so you have to create a test database `test_db`.
+
+Run tests:
+```bash
+./vendor/bin/pest
+```
+
+Example test:
+```php
+it('registers a user successfully', function () {
+    $response = $this->postJson('/api/register', [
+        'name' => 'John Doe',
+        'email' => 'john@example.com',
+        'password' => 'password123',
+        'password_confirmation' => 'password123',
+    ]);
+
+    $response->assertStatus(201)
+        ->assertJsonStructure(['user', 'token']);
+});
+```
+## 🛠️ Code Quality with Rector
+
+This project leverages **Rector**, a powerful PHP code refactoring tool, to ensure high-quality, modern, and maintainable code. Rector automates code upgrades, enforces best practices, and keeps the codebase aligned with **PHP 8.2** and **Laravel 12** standards. It’s integrated into the development workflow to streamline refactoring and improve code consistency.
+
+### Rector Configuration
+
+The project uses a custom `rector.php` configuration to apply specific rules and sets tailored to the Laravel API starter:
+
+- **Paths**: Rector scans key directories (`app`, `bootstrap`, `config`, `public`, `resources`, `routes`, `tests`), excluding `bootstrap/cache` to avoid processing cached files.
+- **Rules**:
+    - `DeclareStrictTypesRector`: Adds `declare(strict_types=1);` to all PHP files, ensuring type safety.
+    - `ValidationRuleArrayStringValueToArrayRector`: Converts Laravel validation rule strings (e.g., `'required|file'`) to array format (e.g., `['required', 'file']`) for better readability and consistency.
+- **Sets**:
+    - `CODE_QUALITY`: Improves readability and enforces coding standards.
+    - `DEAD_CODE`: Removes unused code to keep the codebase lean.
+    - `TYPE_DECLARATION`: Adds type hints and return types for better type safety.
+    - `EARLY_RETURN`: Simplifies control structures by promoting early returns.
+    - `PRIVATIZATION`: Enforces encapsulation by making properties and methods private where possible.
+- **PHP 8.3 Features**: Applies PHP 8.3-specific upgrades to leverage the latest language features.
+- **Import Names**: Removes unused imports and preserves fully qualified class names for clarity.
+
+### Usage
+
+Run Rector to analyze and refactor the codebase:
+```bash
+composer rector #vendor/bin/rector
+```
+
+Rector is a key part of the project’s commitment to delivering a robust and future-proof Laravel API.
+
+## 📝 Logging
+
+The `LoggingMiddleware` ensures secure logging of CQRS commands and queries:
+- Masks sensitive fields (`password`, `access_token`, `api_token`, `hash`, `email`) in logs.
+- Supports nested DTOs (e.g., `verifyEmailDTO`).
+- Logs to the `daily` channel (configurable in `config/logging.php`).
+
+Example log:
+```
+[2025-05-06 09:15:09] daily.INFO: Dispatched: App\Domains\Authorization\Commands\VerifyEmailCommand {"result":{"id":1,"name":"John Doe","email":"****","email_verified_at":"2025-05-06T09:15:09.000000Z"}}
+```
+
+## 🔐 Security
+
+- **Sanctum**: Token-based authentication with expiration middleware (`token.expires`).
+- **Spatie Permissions**: Role-based access control for fine-grained authorization.
+- **Signed URLs**: Email verification routes are protected with signed URLs (`signed` middleware).
+- **Sensitive Data**: Logging middleware masks PII and tokens to comply with GDPR and security best practices.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/awesome-feature`).
+3. Commit changes (`git commit -m 'Add awesome feature'`).
+4. Push to the branch (`git push origin feature/awesome-feature`).
+5. Open a Pull Request.
+
+
+## 🙌 Acknowledgments
+
+- [Laravel](https://laravel.com)
+- [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission)
+- [Laravel Sanctum](https://laravel.com/docs/sanctum)
+- [L5-Swagger](https://github.com/DarkaOnLine/L5-Swagger)
+- [Pest](https://pestphp.com)
+
+---
+
+Built with 💙 by RJUSM. Star the repo if you find it useful! 🌟
