@@ -59,6 +59,8 @@ class LoggingMiddleware
             if (property_exists($commandOrQuery, $key) && is_object($commandOrQuery->$key)) {
                 $data[$key] = $this->maskSensitiveData($commandOrQuery->$key);
             }
+
+            //test
         }
 
         return $data;
