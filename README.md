@@ -44,7 +44,7 @@ Welcome to the **Laravel API Starter**, a modern, scalable, and feature-rich API
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/laravel-api-starter.git
+   git clone https://github.com/RustamjonUsmonov/laravel-api-starter.git
    cd laravel-api-starter
    ```
 
