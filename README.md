@@ -113,22 +113,22 @@ Welcome to the **Laravel API Starter**, a modern, scalable, and feature-rich API
 
 The API provides endpoints for authentication, password management, token handling, and email verification, protected by **Sanctum** and **signed URLs**.
 
-| Method | Endpoint                       | Action                          | Middleware                     | Description                              |
-|--------|--------------------------------|---------------------------------|-------------------------------|------------------------------------------|
-| POST   | `/api/register`                | `AuthController@register`       | None                          | Register a new user                      |
-| POST   | `/api/login`                   | `AuthController@login`          | None                          | Log in and receive an API token          |
-| POST   | `/api/forgot-password`         | `AuthController@forget`         | None                          | Request a password reset link            |
-| POST   | `/api/reset-password`          | `AuthController@reset`          | None                          | Reset password using a token             |
-| POST   | `/api/update-password`         | `AuthController@updatePassword` | `auth:sanctum,token.expires`  | Update password for authenticated user   |
-| POST   | `/api/refresh`                 | `AuthController@refresh`        | `refresh.sanctum`             | Refresh API token                        |
-| POST   | `/api/logout`                  | `AuthController@logout`         | `auth:sanctum,token.expires`  | Log out and revoke token                 |
-| GET    | `/api/verify-email/{id}/{hash}`| `AuthController@verifyEmail`    | `signed`                      | Verify user’s email address              |
+| Method | Endpoint                           | Action                          | Middleware                     | Description                              |
+|--------|------------------------------------|---------------------------------|-------------------------------|------------------------------------------|
+| POST   | `/api/v1/register`                 | `AuthController@register`       | None                          | Register a new user                      |
+| POST   | `/api/v1/login`                    | `AuthController@login`          | None                          | Log in and receive an API token          |
+| POST   | `/api/v1/forgot-password`          | `AuthController@forget`         | None                          | Request a password reset link            |
+| POST   | `/api/v1/reset-password`           | `AuthController@reset`          | None                          | Reset password using a token             |
+| POST   | `/api/v1/update-password`          | `AuthController@updatePassword` | `auth:sanctum,token.expires`  | Update password for authenticated user   |
+| POST   | `/api/v1/refresh`                  | `AuthController@refresh`        | `refresh.sanctum`             | Refresh API token                        |
+| POST   | `/api/v1/logout`                   | `AuthController@logout`         | `auth:sanctum,token.expires`  | Log out and revoke token                 |
+| GET    | `/api/v1/verify-email/{id}/{hash}` | `AuthController@verifyEmail`    | `signed`                      | Verify user’s email address              |
 
 ### Example Request
 
 **Register a User**:
 ```bash
-curl -X POST http://localhost:8000/api/register \
+curl -X POST http://localhost:8000/api/v1/register \
   -H "Content-Type: application/json" \
   -d '{
     "name": "John Doe",
@@ -187,7 +187,7 @@ Run tests:
 Example test:
 ```php
 it('registers a user successfully', function () {
-    $response = $this->postJson('/api/register', [
+    $response = $this->postJson('/api/v1/register', [
         'name' => 'John Doe',
         'email' => 'john@example.com',
         'password' => 'password123',
