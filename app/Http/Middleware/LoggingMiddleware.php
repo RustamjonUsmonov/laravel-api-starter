@@ -59,8 +59,6 @@ class LoggingMiddleware
             if (property_exists($commandOrQuery, $key) && is_object($commandOrQuery->$key)) {
                 $data[$key] = $this->maskSensitiveData($commandOrQuery->$key);
             }
-
-            //test
         }
 
         return $data;
@@ -110,7 +108,7 @@ class LoggingMiddleware
 
         if (is_array($result)) {
             $sensitiveFields = config('logging.sensitive_fields', []);
-            return $resultCache[$hash] = array_map(fn($value, $key) => in_array($key, $sensitiveFields, true) ? '****' : $value, $result, array_keys($result));
+            return $resultCache[$hash] = array_map(fn($value, $key): mixed => in_array($key, $sensitiveFields, true) ? '****' : $value, $result, array_keys($result));
         }
 
         return $resultCache[$hash] = $result;
